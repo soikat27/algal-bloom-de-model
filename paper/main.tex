@@ -11,8 +11,8 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{Right Header}
-\lhead{Left Header}
+\rhead{Saha, Mishra}
+\lhead{Algal Bloom in Lake Chapala}
 \cfoot{\thepage}
 
 \title{Algal Blooms in Lake Chapata: A Differential Equation Model}
@@ -83,7 +83,7 @@ We plot this differential equation on a slope field plotter and observe the foll
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.65\linewidth]{v1.png}
+    \includegraphics[width=0.65\linewidth]{figures/v1.png}
     \captionsetup{width=0.65\linewidth}
     \caption{Slope field for Differential Equation Model~\textbf{V1}, showing periodic oscillation in the rate of change.}
     \label{fig:fig-v1}
@@ -120,7 +120,37 @@ Most importantly, when the population reaches zero, the derivative may still be 
 
 These limitations motivates us to modify the growth function to address the above concerns, ensure biological feasibility, and better represent realistic population dynamics.
 
+\subsubsection{Model: V2}
 
+To address the aforementioned limitations of the model~\ref{V1}, particularly the issue of negative growth at zero population and the lack of feasibility, we modify the oscillating growth function by shifting it upward. The revised model now becomes
+
+\begin{equation}
+    \frac{dy}{dt} = 1- \cos{t}
+    \label{V2}
+    \tag{V2}
+\end{equation}
+
+In this model, the cosine function is shifted upward by its amplitude which is 1. since $\cos{t}$ ranges between $-1$ and $+1$, the expression $1 - \cos t$ now ranges between $0$ and $2$. As a result, the rate of change is never negative.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{figures/v2.png}
+    \captionsetup{width=0.65\linewidth}
+    \caption{Slope field for model~\ref{V2}, showing the upward-shifted oscillating rate of change.}
+    \label{fig:fig-v2}
+\end{figure}
+
+This upward shift is helpful because it prevents the model from forcing the population to decrease when the population is already small. As observed in the model~\ref{V1}, the derivatives oscillated between $-1$ and $+1$, meaning the population could be pushed into negative values. In model~\ref{V2} however, the derivative is always nonnegative.
+
+Below, we plot the differential equation model~\ref{V2} on a slope field plotter and look at its features.
+
+At $t = 0$,
+\[
+\frac{dy}{dt} = 1 - \cos(0) = 0,
+\]
+so the model begins with zero growth rather than negative growth, which resolves the negative population issue. Thus, shifting the oscillation upward ensures that growth remains biologically feasible and prevents the derivative from driving the population below zero.
+
+However, although this modification improves feasibility, the derivatives still does not depend on the population $y$. This means the same amount of algae is added to the total population due to growth regardless of how large or small the population is, which, again, remains biologically unrealistic. Therefore, the model~\ref{V2} still lacks a mechanism that ties growth to the current population size.
 
 
 
