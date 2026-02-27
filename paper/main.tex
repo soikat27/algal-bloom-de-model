@@ -132,6 +132,10 @@ To address the aforementioned limitations of the model~\ref{V1}, particularly th
 
 In this model, the cosine function is shifted upward by its amplitude which is 1. since $\cos{t}$ ranges between $-1$ and $+1$, the expression $1 - \cos t$ now ranges between $0$ and $2$. As a result, the rate of change is never negative.
 
+This upward shift is helpful because it prevents the model from forcing the population to decrease when the population is already small. As observed in the model~\ref{V1}, the derivatives oscillated between $-1$ and $+1$, meaning the population could be pushed into negative values. In model~\ref{V2} however, the derivative is always nonnegative.
+
+Below, we plot the differential equation model~\ref{V2} on a slope field plotter and look at its features.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.65\linewidth]{figures/v2.png}
@@ -139,10 +143,6 @@ In this model, the cosine function is shifted upward by its amplitude which is 1
     \caption{Slope field for model~\ref{V2}, showing the upward-shifted oscillating rate of change.}
     \label{fig:fig-v2}
 \end{figure}
-
-This upward shift is helpful because it prevents the model from forcing the population to decrease when the population is already small. As observed in the model~\ref{V1}, the derivatives oscillated between $-1$ and $+1$, meaning the population could be pushed into negative values. In model~\ref{V2} however, the derivative is always nonnegative.
-
-Below, we plot the differential equation model~\ref{V2} on a slope field plotter and look at its features.
 
 At $t = 0$,
 \[
@@ -152,8 +152,59 @@ so the model begins with zero growth rather than negative growth, which resolves
 
 However, although this modification improves feasibility, the derivatives still does not depend on the population $y$. This means the same amount of algae is added to the total population due to growth regardless of how large or small the population is, which, again, remains biologically unrealistic. Therefore, the model~\ref{V2} still lacks a mechanism that ties growth to the current population size.
 
+\subsubsection{Model: V3}
 
+Since model~\ref{V2} treated growth as a fixed amount added to the population, independent of the current population size, it remained biologically unrealistic. In real systems, population growth typically depends on how large the population already is. Therefore, to introduce dependency on the population, we modify the oscillating term from the previous model so that it acts as a growth rate rather than a fixed growth amount. The revised model is
 
+\begin{equation}
+    \frac{dy}{dt} = (1 - \cos{t})y
+    \label{V3}
+    \tag{V3}
+\end{equation}
+
+In this model, the oscillating term $1 - \cos t$ multiplies the population $y$, making the growth both time- and population-dependent. This means that when population is larger, the actual amount of growth is larger, and when the population is small, the amount of growth is proportionally smaller, which better reflects how growth occurs in real biological systems.
+
+We plot the differential equation model~\ref{V2} on a slope field plotter below and observe how it changes $y$, population over $t$, time.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{figures/v3.png}
+    \captionsetup{width=0.65\linewidth}
+    \caption{Slope field for model~\ref{V3}, showing slopes that depend on both time and population size.}
+    \label{fig:fig-v3}
+\end{figure}
+
+As observed in the slope field (Figure~\ref{fig:fig-v3}), model~\ref{V3} differs from model~\ref{V2} because the slopes now depend on both time and population size. In Version 2, slopes varied with time but remained the same vertically for all values of $y$. However, in Version 3, the slopes become steeper as $y$ increases and flatten near $y = 0$. This indicates that the population increases by a fraction of itself rather than by a fixed number. Thus, when the population is larger, it grows more rapidly, and when the population is smaller, it grows more slowly.
+
+Biologically, this shows the difference between adding a constant number of algae each day (actual growth) and allowing the algae to grow at a fraction of its current total population (rate of growth).
+
+Although, this model resolves several issue from previous models, it still lacks a way to represent removal or governmental intervention. Therefore, further refinement of the model remains necessary.
+
+\subsubsection{Model: V4}
+
+Although model~\ref{V3} incorporates growth more realistically by making it proportional to the population, it does not yet account for external intervention or removal. To represent consistent governmental efforts to reduce algae growth, we introduce a constant output term. The revised model is
+
+\begin{equation}
+    \frac{dy}{dt} = (1 - \cos{t})y - 1
+    \label{V4}
+    \tag{V4}
+\end{equation}
+
+Here, the newly introduced term $-1$ represents a constant removal of algae over time, independent of the current population size. Visually, this refined model preserves the periodic behavior of the population function while incorporating a constant death term. Compared to model~\ref{V3}, the population still grows periodically, but each cycle is reduced by a fixed amount due to the constant death function.
+
+Below, we plot the model~\ref{V4} on a slope field plotter to visually observe the changes due to introducing the death function.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{figures/v4.png}
+    \captionsetup{width=0.65\linewidth}
+    \caption{Slope field for model~\ref{V4}, illustrating periodic growth with constant removal.}
+    \label{fig:fig-v4}
+\end{figure}
+
+However, this assumption is also not biologically realistic. If the population becomes very small, removing the same fixed amount could drive the population below zero. In fact, if $y$ is sufficiently small, the constant removal term may outgrow the growth term, forcing the solution into negative values, near $y=0$.
+
+Since population cannot be negative, this model may again violate feasibility. Therefore, although model~\ref{V4} introduces an important biological feature, government intervention, it does so in a way that is not entirely realistic. It is not feasible and often not realistic to assume that equal numbers of algae are continuously removed regardless of the population size. This leads us to modify the death function so that it becomes proportional to the population itself.
 
 
 
