@@ -6,6 +6,8 @@
 \usepackage{indentfirst}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{parskip}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -22,7 +24,7 @@
 
 \begin{document}
 % This is how you make a comment
-\maketitle % Edit title information in metadata above
+\maketitle % This renders the title above, Edit title information in metadata above
 
 \newpage
 
@@ -30,7 +32,8 @@
 
 \newpage
 
-\section{This section appears in the table of contents}
+% Intro section starts
+\section{Introduction}
 
 \section*{This one with an asterisk does not}
 
@@ -40,14 +43,125 @@
 
 \subsubsection{Subsubsection}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\linewidth]{Tesseract_torus.png}
-    \caption{This is a figure.}
-    \label{fig:figure_name}
-\end{figure}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.5\linewidth]{Tesseract_torus.png}
+%     \caption{This is a figure.}
+%     \label{fig:figure_name}
+% \end{figure}
 
 I can reference the figure like this (\ref{fig:figure_name}).
+
+I can also reference books or articles by adding them to my \texttt{biblio.bib} file and citing them like this \cite{key}.
+
+\newpage
+
+% Methods section starts
+\section{Methods}
+
+\subsection{Model development}
+
+We kick off with an attempt to develop a resource-dependent model to describe the resilient ability of an algae population to bounce back after near-annihilation. To construct such a realistic model for algal blooms in Lake Chapada, we begin with the general structure 
+
+\begin{equation}
+    \frac{dy}{dt} = \text{Growth Function} - \text{Death Function}.
+\end{equation}
+
+Here, $y(t)$ represents the density of the algae population $(g/m^2)$, and $t$ represents time (days). Because the background suggests that chemical influx occurs periodically, we therefore seek to model using an oscillating function over time. 
+
+\subsubsection{Model: V1}
+
+To incorporate this periodic growth, the first model we consider is 
+
+\begin{equation}
+    \frac{dy}{dt} = -\cos{t}.
+    \label{V1}
+    \tag{V1}
+\end{equation}
+
+We plot this differential equation on a slope field plotter and observe the following characteristics of the general solution.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{v1.png}
+    \captionsetup{width=0.65\linewidth}
+    \caption{Slope field for Differential Equation Model~\textbf{V1}, showing periodic oscillation in the rate of change.}
+    \label{fig:fig-v1}
+\end{figure}
+
+As we can see in the slope field (Figure~\ref{fig:fig-v1}), this model represents an oscillating rate of change of population over time, varying between $-1$ and $+1$. The cosine function was chosen to reflect periodic growth and decline due to recurring agricultural chemical input. The derivatives, $-\cos{t}$, oscillates between $-1$ and $+1$, since
+\[
+    -1 \leq -\cos{t} \leq 1.
+\]
+
+However, this model poses several limitations and introduces scenarios that conflict with biological reality. To determine whether this oscillating growth rate also produces an oscillating population, we solve the differential equation model~\textbf{V1}:
+\[
+    \frac{dy}{dt} = -\cos t,
+\]
+\[
+dy = -\cos t \, dt.
+\]
+Integrating, we get
+\[
+y(t) = -\sin t + C.
+\]
+
+Because $-\sin{t}$ oscillates between $-1$ and $+1$, the population exhibits oscillatory behavior. However, this model fails to address several important biological features and, in some cases predicts behavior that is clearly not biologically feasible.
+
+First, at $t = 0$,
+\[
+    \frac{dy}{dt} = -\cos(0) = -1,
+\]
+so the model begins with negative growth. 
+
+Second, the derivative does not depend on the population $y$. This implies that the same amount of growth or decline occurs regardless of whether the algae population is large or small. Biologically, this is unrealistic.
+
+Most importantly, when the population reaches zero, the derivative may still be negative. This would cause the solution to move into negative population values, which are not biologically meaningful. Thus, model~\ref{V1} does not satisfy the requirement that the population remain nonnegative.
+
+These limitations motivates us to modify the growth function to address the above concerns, ensure biological feasibility, and better represent realistic population dynamics.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+I can reference the figure like this (\ref{fig:slopefield-v1}).
 
 I can also reference books or articles by adding them to my \texttt{biblio.bib} file and citing them like this \cite{key}.
 
