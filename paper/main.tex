@@ -61,7 +61,7 @@ I can also reference books or articles by adding them to my \texttt{biblio.bib} 
 
 \subsection{Model development}
 
-We kick off with an attempt to develop a resource-dependent model to describe the resilient ability of an algae population to bounce back after near-annihilation. To construct such a realistic model for algal blooms in Lake Chapada, we begin with the general structure 
+We kick off model development with an attempt to develop a resource-dependent model to describe the resilient ability of an algae population to bounce back after near-annihilation. To construct such a realistic model for algal blooms in Lake Chapada, we begin with the general structure 
 
 \begin{equation}
     \frac{dy}{dt} = \text{Growth Function} - \text{Death Function}.
@@ -74,7 +74,7 @@ Here, $y(t)$ represents the density of the algae population $(g/m^2)$, and $t$ r
 To incorporate this periodic growth, the first model we consider is 
 
 \begin{equation}
-    \frac{dy}{dt} = -\cos{t}.
+    \frac{dy}{dt} = -\cos(t).
     \label{V1}
     \tag{V1}
 \end{equation}
@@ -91,7 +91,7 @@ We plot this differential equation on a slope field plotter and observe the foll
 
 As we can see in the slope field (Figure~\ref{fig:fig-v1}), this model represents an oscillating rate of change of population over time, varying between $-1$ and $+1$. The cosine function was chosen to reflect periodic growth and decline due to recurring agricultural chemical input. The derivatives, $-\cos{t}$, oscillates between $-1$ and $+1$, since
 \[
-    -1 \leq -\cos{t} \leq 1.
+    -1 \leq -\cos(t) \leq 1.
 \]
 
 However, this model poses several limitations and introduces scenarios that conflict with biological reality. To determine whether this oscillating growth rate also produces an oscillating population, we solve the differential equation model~\textbf{V1}:
@@ -99,11 +99,11 @@ However, this model poses several limitations and introduces scenarios that conf
     \frac{dy}{dt} = -\cos t,
 \]
 \[
-dy = -\cos t \, dt.
+dy = -\cos(t) \, dt.
 \]
 Integrating, we get
 \[
-y(t) = -\sin t + C.
+y(t) = -\sin(t) + C.
 \]
 
 Because $-\sin{t}$ oscillates between $-1$ and $+1$, the population exhibits oscillatory behavior. However, this model fails to address several important biological features and, in some cases predicts behavior that is clearly not biologically feasible.
@@ -125,7 +125,7 @@ These limitations motivates us to modify the growth function to address the abov
 To address the aforementioned limitations of the model~\ref{V1}, particularly the issue of negative growth at zero population and the lack of feasibility, we modify the oscillating growth function by shifting it upward. The revised model now becomes
 
 \begin{equation}
-    \frac{dy}{dt} = 1- \cos{t}
+    \frac{dy}{dt} = 1- \cos(t)
     \label{V2}
     \tag{V2}
 \end{equation}
@@ -154,10 +154,10 @@ However, although this modification improves feasibility, the derivatives still 
 
 \subsubsection{Model: V3}
 
-Since model~\ref{V2} treated growth as a fixed amount added to the population, independent of the current population size, it remained biologically unrealistic. In real systems, population growth typically depends on how large the population already is. Therefore, to introduce dependency on the population, we modify the oscillating term from the previous model so that it acts as a growth rate rather than a fixed growth amount. The revised model is
+Since model~\ref{V2} treated growth as a fixed amount added to the population, independent of the current population size, it remained biologically unrealistic. In real world, population growth typically depends on how large the population already is. Therefore, to introduce dependency on the population, we modify the oscillating term from the previous model so that it acts as a growth rate rather than a fixed growth amount. The revised model is
 
 \begin{equation}
-    \frac{dy}{dt} = (1 - \cos{t})y
+    \frac{dy}{dt} = (1 - \cos(t))y
     \label{V3}
     \tag{V3}
 \end{equation}
@@ -176,16 +176,14 @@ We plot the differential equation model~\ref{V2} on a slope field plotter below 
 
 As observed in the slope field (Figure~\ref{fig:fig-v3}), model~\ref{V3} differs from model~\ref{V2} because the slopes now depend on both time and population size. In Version 2, slopes varied with time but remained the same vertically for all values of $y$. However, in Version 3, the slopes become steeper as $y$ increases and flatten near $y = 0$. This indicates that the population increases by a fraction of itself rather than by a fixed number. Thus, when the population is larger, it grows more rapidly, and when the population is smaller, it grows more slowly.
 
-Biologically, this shows the difference between adding a constant number of algae each day (actual growth) and allowing the algae to grow at a fraction of its current total population (rate of growth).
-
-Although, this model resolves several issue from previous models, it still lacks a way to represent removal or governmental intervention. Therefore, further refinement of the model remains necessary.
+Biologically, this shows the difference between adding a constant number of algae each day (actual growth) and allowing the algae to grow at a fraction of its current total population (rate of growth). This model resolves several issue from previous models. However, it still lacks a way to represent removal or governmental intervention. Therefore, further refinement of the model remains necessary.
 
 \subsubsection{Model: V4}
 
-Although model~\ref{V3} incorporates growth more realistically by making it proportional to the population, it does not yet account for external intervention or removal. To represent consistent governmental efforts to reduce algae growth, we introduce a constant output term. The revised model is
+Although model~\ref{V3} incorporates growth more realistically by making it proportional to the population, it does not yet account for external intervention or removal i.e the death function is still zero. To represent consistent governmental efforts to reduce algae growth, we introduce a constant death term. The revised model is
 
 \begin{equation}
-    \frac{dy}{dt} = (1 - \cos{t})y - 1
+    \frac{dy}{dt} = (1 - \cos(t))y - 1
     \label{V4}
     \tag{V4}
 \end{equation}
@@ -202,10 +200,60 @@ Below, we plot the model~\ref{V4} on a slope field plotter to visually observe t
     \label{fig:fig-v4}
 \end{figure}
 
-However, this assumption is also not biologically realistic. If the population becomes very small, removing the same fixed amount could drive the population below zero. In fact, if $y$ is sufficiently small, the constant removal term may outgrow the growth term, forcing the solution into negative values, near $y=0$.
+However, this assumption is also not biologically realistic. If the population becomes very small, removing the same fixed amount could drive the population below zero. In fact, if $y$ is sufficiently small, the constant death term may outgrow the growth term, forcing the solution into negative values, near $y=0$.
 
 Since population cannot be negative, this model may again violate feasibility. Therefore, although model~\ref{V4} introduces an important biological feature, government intervention, it does so in a way that is not entirely realistic. It is not feasible and often not realistic to assume that equal numbers of algae are continuously removed regardless of the population size. This leads us to modify the death function so that it becomes proportional to the population itself.
 
+\subsubsection{Model: V5}
+
+As discussed in model~\ref{V4}, removing a fixed amount of algae at all times is not biologically realistic. To address this limitation, we modify the death term so that removal becomes proportional to the current population. With that in mind, the revised model we propose is
+
+\begin{equation}
+    \frac{dy}{dt} = (1 - \cos(t))y - y
+    \label{V5}
+    \tag{V5}
+\end{equation}
+
+In this refined model~\ref{V5}, the death term is now proportional to the population size. This means that when the population is large, more algae are removed, and when the population is small, less algae are removed. Biologically, this is more reasonable, since the death function due to intervention efforts or natural losses is often proportional to the current total population rather than fixed at a constant amount.
+
+Visually, this modification prevents the solution from being forced below zero. If the population reaches zero, then
+\[
+\frac{dy}{dt} = 0.
+\]
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{figures/v5.png}
+    \captionsetup{width=0.65\linewidth}
+    \caption{Solution curve for model~\ref{V5}, preventing negative population even when population is near zero.}
+    \label{fig:fig-v5}
+\end{figure}
+
+So, the solution remains at zero and does not suddenly become negative. Therefore, if the initial population is nonnegative, the solution remains nonnegative for all time. This ensures biological feasibility.
+
+Looking back at model~\ref{V3}, where the population grew without bound, the addition of a proportional death function creates more realistic population dynamics, allowing the population to fluctuate in magnitude while remaining feasible. Version 5 therefore provides a more realistic balance between the periodic growth function and the death function, and leads us very close to the generalized model.
+
+\subsection{General Model}
+
+After refining the model through \ref{V1}-\ref{V5}, we now introduce a general form that incorporates adjustable parameters to provide flexibility and better represent the behavior of algal bloom in Lake Chapala. The general model is
+
+\begin{equation}
+    \frac{dy}{dt} = a(1 - \cos(bt))y - hy
+    \label{2}
+    \tag{2}
+\end{equation}
+
+This model finally combines periodic growth with proportional death term. The term $a(1-\cos{bt})y$ represents time- and population-density-dependent growth, and the term $-hy$ represents proportional death due to government intervention and natural loss.
+
+If time $t$ is measured in days and population density $y$ is measured in grams per square meter $g/m^2$, then derivative $\frac{dy}{dt}$ has units of $g/(m^2\cdot \text{day})$. We now describe what each parameter represents and determine its units.
+
+\textbf{Parameter $a$:} The parameter $a$ controls the strength of the periodic growth. Larger values of $a$ increase the overall growth rate due to chemical influx. Since this term multiplies $y$, the parameter $a$ has units of $1/\text{day}$
+
+\textbf{Parameter $b$:} The parameter $b$ controls how frequently the oscillation occurs. Since the cosine function repeats every $2\pi$, $b$ determines how fast the cycles repeat or in other word, it manipulates the period of the growth cycles. The parameter $b$ must have units of radians per day, $rad/\text{day}$ to make sure the expression $bt$ inside the cosine function is dimensionless.
+
+\textbf{Parameter $h$:} The parameter $h$ represents the proportional death rate, which accounts for consistent removal of algae over time. Like the parameter $a$, this parameter also has units of $1/\text{day}$.
+
+This general model provides flexibility in tuning the amplitude of growth, the frequency of oscillation, and the proportion of removal through tuning the associated parameters. It, therefore, helps us fit the model to observed data and analyze long-term algae population behavior in Lake Chapala.
 
 
 
@@ -242,7 +290,7 @@ Since population cannot be negative, this model may again violate feasibility. T
 
 
 
-I can reference the figure like this (\ref{fig:slopefield-v1}).
+I can reference the figure like this (\ref{fig:fig-v1}).
 
 I can also reference books or articles by adding them to my \texttt{biblio.bib} file and citing them like this \cite{key}.
 
