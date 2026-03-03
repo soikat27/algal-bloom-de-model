@@ -294,11 +294,29 @@ a - h = -0.005.
 
 Now, solving for $a$ and $h$, we get
 \[
-a = 0.255.
+a = 0.255
 \]
+and,
 \[
 h = 0.260.
 \]
+
+Another way to interpret the statement that ``the maximum percent rate of change is $25\%$'' is to assume it refers to the maximum amplitude of the population density function. Therefore, we instead have
+\[
+a' = 0.25
+\]
+and, since
+\[
+a' - h' = -0.005.
+\]
+so,
+\[
+h' = 0.255.
+\]
+
+\section{Results}
+
+Now, we attempt to solve the differential equation model~\ref{2} to obtain $y(t)$, the algae population density as a function of time, $t$.
 
 \subsection{General solution}
 
@@ -339,20 +357,76 @@ y(t)=e^{(a-h)t-\frac{a}{b}\sin(bt)} \cdot e^C.
 or,
 \begin{equation}
     y(t)=C\,e^{(a-h)t-\frac{a}{b}\sin(bt)}.
-    \label{gen-sol}
+    \label{3}
     \tag{3}
 \end{equation}
+
+\subsection{Particular solution}
 
 Finally, plugging in the initial condition $y(0)=y_0$ in the general solution~(\ref{gen-sol}), we get $C=y_0$. Therefore, the solution is
 \begin{equation}
     y(t)=y_0\,e^{(a-h)t-\frac{a}{b}\sin(bt)}.
-    \label{particular-sol}
+    \label{4}
     \tag{4}
 \end{equation}
 
-\section{Results}
+\section{Analysis}
 
+Substituting the parameter values we computed in \textbf{Model Calibration} and the initial population density,
+\[
+y(0) = 81\, g/m^2,
+\]
+into~(\ref{4}), we rewrite the two different particular solutions:
 
+Using $a = 0.255 \And h = 0.260$,
+\begin{equation}
+    y(t)=81\,e^{-0.005t-\frac{3.825}{2\pi}\sin(\frac{2\pi}{15}t)}
+    \label{5}
+    \tag{5}
+\end{equation}
+and
+
+Using $a' = 0.25 \And h' = 0.255$,
+\begin{equation}
+    y'(t)=81\,e^{-0.005t-\frac{3.75}{2\pi}\sin(\frac{2\pi}{15}t)}.
+    \label{5'}
+    \tag{5'}
+\end{equation}
+
+Since both functions~(\ref{5}) and (\ref{5'}) generate nearly identical graphs while preserving all desired qualitative features of the model, it suffices to graph only one. Therefore, without loss of generality, we randomly decide to graph $y'(t)$ below.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{figures/y(t)-graph.png}
+    \captionsetup{width=0.65\linewidth}
+    \caption{Graph of the particular solution $y'(t)$ with initial population density $y(0) = 81 g/m^2$ and calibrated parameter values.}
+    \label{fig:fig-population-desnity}
+\end{figure}
+
+Assuming population densities above $100 g/m^2$ trigger offensive odors in the drinking water, we now estimate the length of time intervals from the following fig during which
+\[
+y(t) > 100.
+\]
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.65\linewidth]{figures/y(t)-with-threshold.png}
+    \captionsetup{width=0.65\linewidth}
+    \caption{Graph of the particular solution $y'(t)$ with population density threshold $ y(t) = 100 g/m^2$}
+    \label{fig:fig-population-desnity}
+\end{figure}
+
+\begin{enumerate}
+    \item 1st interval: $[9, 14]$, (length = $5$ days)
+    \item 2nd interval: $[25, 29]$, (length = $5$ days)
+    \item 3rd interval: $[39, 43]$, (length = $4$ days)
+    \item 4th interval: $[55, 58]$, (length = $4$ days)
+    \item 5th interval: $[70, 72]$, (length = $2$ days)
+\end{enumerate}
+
+We observe that the exceeding intervals become progressively shorter over time due to the negative net growth, $a - h = -0.005$. The last time the population exceeds $100$ g/m$^2$ is approximately at $t = 72$ days. After that, even the peak amplitude stayed below the odor threshold.
+
+\section{Conclusion}
 
 
 
