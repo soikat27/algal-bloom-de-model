@@ -13,10 +13,10 @@
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{Saha, Mishra}
-\lhead{Algal Bloom in Lake Chapala}
+\lhead{Algal Blooms in Lake Chapala}
 \cfoot{\thepage}
 
-\title{Algal Blooms in Lake Chapata: A Differential Equation Model}
+\title{Algal Blooms in Lake Chapala: A Differential Equation Model}
 \author{Soikat Saha\\Shruti D Mishra \\ \\
 \small Math225: Differential Equations \\
 \small Professor Cayce Fylling \\
@@ -24,8 +24,7 @@
 \date{\today}
 
 \begin{document}
-% This is how you make a comment
-\maketitle % This renders the title above, Edit title information in metadata above
+\maketitle % This renders the title above, edit title information in metadata above
 
 \newpage
 
@@ -77,7 +76,7 @@ We plot this differential equation on a slope field plotter and observe the foll
     \label{fig:fig-v1}
 \end{figure}
 
-As we can see in the slope field (Figure~\ref{fig:fig-v1}), this model represents an oscillating rate of change of population over time, varying between $-1$ and $+1$. The cosine function was chosen to reflect periodic growth and decline due to recurring agricultural chemical input. The derivatives, $-\cos{t}$, oscillates between $-1$ and $+1$, since
+As we can see in the slope field (Figure~\ref{fig:fig-v1}), this model represents an oscillating rate of change of population over time, varying between $-1$ and $+1$. The cosine function was chosen to reflect periodic growth and decline due to recurring agricultural chemical input. The derivatives, $-\cos(t)$, oscillate between $-1$ and $+1$, since
 \[
     -1 \leq -\cos(t) \leq 1.
 \]
@@ -94,19 +93,19 @@ Integrating, we get
 y(t) = -\sin(t) + C.
 \]
 
-Because $-\sin{t}$ oscillates between $-1$ and $+1$, the population exhibits oscillatory behavior. However, this model fails to address several important biological features and, in some cases predicts behavior that is clearly not biologically feasible.
+Because $-\sin{t}$ oscillates between $-1$ and $+1$, the population exhibits oscillatory behavior. However, this model fails to address several important biological features and, in some cases, predicts behavior that is clearly not biologically feasible.
 
 First, at $t = 0$,
 \[
     \frac{dy}{dt} = -\cos(0) = -1,
 \]
-so the model begins with negative growth. 
+so, the model begins with negative growth. 
 
 Second, the derivative does not depend on the population $y$. This implies that the same amount of growth or decline occurs regardless of whether the algae population is large or small. Biologically, this is unrealistic.
 
-Most importantly, when the population reaches zero, the derivative may still be negative. This would cause the solution to move into negative population values, which are not biologically meaningful. Thus, model~\ref{V1} does not satisfy the requirement that the population remain nonnegative.
+Most importantly, when the population reaches zero, the derivative may still be negative. This would cause the solution to move to negative population values, which are not biologically meaningful. Thus, model~\ref{V1} does not satisfy the requirement that the population remain nonnegative.
 
-These limitations motivates us to modify the growth function to address the above concerns, ensure biological feasibility, and better represent realistic population dynamics.
+These limitations motivate us to modify the growth function to address the above concerns, ensure biological feasibility, and better represent realistic population dynamics.
 
 \subsubsection{Model: V2}
 
@@ -138,7 +137,7 @@ At $t = 0$,
 \]
 so the model begins with zero growth rather than negative growth, which resolves the negative population issue. Thus, shifting the oscillation upward ensures that growth remains biologically feasible and prevents the derivative from driving the population below zero.
 
-However, although this modification improves feasibility, the derivatives still does not depend on the population $y$. This means the same amount of algae is added to the total population due to growth regardless of how large or small the population is, which, again, remains biologically unrealistic. Therefore, the model~\ref{V2} still lacks a mechanism that ties growth to the current population size.
+However, although this modification improves feasibility, the derivative still does not depend on the population $y$. This means the same amount of algae is added to the total population due to growth regardless of how large or small the population is, which again, remains biologically unrealistic. Therefore, the model~\ref{V2} still lacks a mechanism that ties growth to the current population size.
 
 \subsubsection{Model: V3}
 
@@ -150,9 +149,9 @@ Since model~\ref{V2} treated growth as a fixed amount added to the population, i
     \tag{V3}
 \end{equation}
 
-In this model, the oscillating term $1 - \cos t$ multiplies the population $y$, making the growth both time- and population-dependent. This means that when population is larger, the actual amount of growth is larger, and when the population is small, the amount of growth is proportionally smaller, which better reflects how growth occurs in real biological systems.
+In this model, the oscillating term $1 - \cos (t)$ multiplies the population $y$, making the growth both time- and population-dependent. This means that when population is larger, the actual amount of growth is larger, and when the population is small, the amount of growth is proportionally smaller, which better reflects how growth occurs in real biological systems.
 
-We plot the differential equation model~\ref{V2} on a slope field plotter below and observe how it changes $y$, population over $t$, time.
+We plot the differential equation model~\ref{V3} on a slope field plotter below and observe how it changes $y$, population over $t$, time.
 
 \begin{figure}[h]
     \centering
@@ -237,7 +236,7 @@ If time $t$ is measured in days and population density $y$ is measured in grams 
 
 \textbf{Parameter $a$:} The parameter $a$ controls the strength of the periodic growth. Larger values of $a$ increase the overall growth rate due to chemical influx. Since this term multiplies $y$, the parameter $a$ has units of $1/\text{day}$
 
-\textbf{Parameter $b$:} The parameter $b$ controls how frequently the oscillation occurs. Since the cosine function repeats every $2\pi$, $b$ determines how fast the cycles repeat or in other word, it manipulates the period of the growth cycles. The parameter $b$ must have units of radians per day, $rad/\text{day}$ to make sure the expression $bt$ inside the cosine function is dimensionless.
+\textbf{Parameter $b$:} The parameter $b$ controls how frequently the oscillation occurs. Since the cosine function repeats every $2\pi$, $b$ determines how fast the cycles repeat or in other words, it manipulates the period of the growth cycles. The parameter $b$ must have units of radians per day, $rad/\text{day}$ to make sure the expression $bt$ inside the cosine function is dimensionless.
 
 \textbf{Parameter $h$:} The parameter $h$ represents the proportional death rate, which accounts for consistent removal of algae over time. Like the parameter $a$, this parameter also has units of $1/\text{day}$.
 
@@ -254,7 +253,7 @@ The observed experimental data follows:
     \item The maximum rates of change diminish slowly over time at approximately $0.5\%$ per day \cite{harwood-algae}.
 \end{enumerate}
 
-\textbf{Parameter $b$:} Since spraying occurs every 15 days, the growth cycle has a period, $T = 15$ days. We also know that cosine function repeats after every $2\pi$ radians. Therefore, for one full cycle to occur in our model, the input of the cosine function increase by $2\pi$ after 1 period, $T$,time.
+\textbf{Parameter $b$:} Since spraying occurs every 15 days, the growth cycle has a period, $T = 15$ days. We also know that cosine function repeats after every $2\pi$ radian. Therefore, for one full cycle to occur in our model, the input of the cosine function increases by $2\pi$ after 1 period, $T$,time.
 
 In the expression $\cos(bt)$, the input is $bt$. Thus, one full cycle occurs when
 \[
@@ -363,7 +362,7 @@ or,
 
 \subsection{Particular solution}
 
-Finally, plugging in the initial condition $y(0)=y_0$ in the general solution~(\ref{gen-sol}), we get $C=y_0$. Therefore, the solution is
+Finally, plugging in the initial condition $y(0)=y_0$ in the general solution~(\ref{3}), we get $C=y_0$. Therefore, the solution is
 \begin{equation}
     y(t)=y_0\,e^{(a-h)t-\frac{a}{b}\sin(bt)}.
     \label{4}
@@ -405,7 +404,7 @@ Since both functions~(\ref{5}) and (\ref{5'}) generate nearly identical graphs w
 
 Assuming population densities above $100 g/m^2$ trigger offensive odors in the drinking water, we now estimate the length of time intervals from the following fig during which
 \[
-y(t) > 100.
+y'(t) > 100.
 \]
 
 \begin{figure}[h]
@@ -418,9 +417,9 @@ y(t) > 100.
 
 \begin{enumerate}
     \item 1st interval: $[9, 14]$, (length = $5$ days)
-    \item 2nd interval: $[25, 29]$, (length = $5$ days)
+    \item 2nd interval: $[24, 29]$, (length = $5$ days)
     \item 3rd interval: $[39, 43]$, (length = $4$ days)
-    \item 4th interval: $[55, 58]$, (length = $4$ days)
+    \item 4th interval: $[55, 58]$, (length = $3$ days)
     \item 5th interval: $[70, 72]$, (length = $2$ days)
 \end{enumerate}
 
@@ -428,21 +427,15 @@ We observe that the exceeding intervals become progressively shorter over time d
 
 \section{Conclusion}
 
+Throughout the paper, we developed a differential equation model to describe algal bloom behavior in Lake Chapala. Starting from a simple oscillatory growth idea, we systematically refined the model to ensure biological feasibility and realistic population behavior. By incorporating periodic growth and proportional death as suggested in the reference paper \cite{harwood-algae}, we structure a general model that reflects both seasonal chemical influx (aka. Growth Function) and consistent removal effects (aka. Death Function).
 
+Using the observed experimental data, we calibrated the parameters to reflect spraying frequency, maximum rate of change, and subsequent decrease in growth over time. Following that, we attempt to solve the model which allowed us to analyze how the algae population evolves over time. The solution shows oscillatory behavior with decreasing amplitude, meaning the blooms become less severe as time goes by due to the negative net growth rate.
 
+With given initial population density of $81g/m^2$, the model predicts that the algae population exceeds the odor threshold of $100g/m^2$ during five early time intervals. However, these intervals shorten progressively, and the final exceedance occurs around day 72. After this point, the population remains below the threshold.
 
+Overall, this mathematical model serves as a fairly reasonable and simplified representation of Lake Chapala and, more specifically, the algal bloom behavior in this Lake. It can also serve as an inspiration to show that how differential equations can be used to model environmental systems and interpret real-world data.
 
-
-
-
-
-
-
-
-
-
-
-
+% References start here...
 \bibliographystyle{plainurl}
 \bibliography{biblio}
 
