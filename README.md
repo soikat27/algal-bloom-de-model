@@ -53,14 +53,14 @@ The compiled paper is available here. Simply open the PDF in `/algal-bloom-de-mo
 #### 2. Compile the Paper Locally
 
 ##### **Prerequisites**
-You will need an **Overleaf account**, which is a free online LaTeX editor:
+You will need an `Overleaf account`, which is a free online LaTeX editor:
 * Go to overleaf.com and create an account (it's free!).
 * That's literally it!
 
+##### **Import the Project**
+
 The project import-ready file is provided. Just import the project `/algal-bloom-de-model/project/Algal_Blooms_in_Lake_Chapala__A_Differential_Equation_Model.zip` into overleaf following the steps below:
 
-##### Import the Project
-An import-ready version of the LaTeX project is provided in this repository.
 ```
 1. Download the file located at: `/algal-bloom-de-model/project/Algal_Blooms_in_Lake_Chapala__A_Differential_Equation_Model.zip`.
 ``` 
@@ -93,5 +93,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 * Environmental data provided through the course project description
-* Special thanks to **Professor Cayce Fylling** for guidance and support throughout this project
+* Special thanks to **`Professor Cayce Fylling`** for guidance and support throughout this project
 * The LaTeX and open-source mathematics community
