@@ -12,23 +12,25 @@
 \title{Algal Blooms in Lake Chapala: A Differential Equation Model}
 \author{Soikat Saha\thanks{Corresponding author. \texttt{sahaso01@gettysburg.edu}} \\
         Shruti D.~Mishra \\
-        \small Department of Mathematics, Gettysburg College, Gettysburg, PA, USA}
-\date{July 2026}
+        \small Department of Mathematics, Gettysburg College, \\ 
+        \small Gettysburg, PA, USA}
+
+\date{}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Lake Chapala, Mexico's largest freshwater lake, experiences recurring algal blooms that affect drinking water quality for millions of residents. We develop a differential equation model for algae population density that combines periodic nutrient influx from agricultural pesticide cycles with proportional removal representing intervention and natural loss. Starting from a deliberately simple oscillatory growth term, we systematically refine the model through five versions to enforce biological feasibility: non-negative population, population-dependent growth, and proportional death. The resulting model: $dy/dt = a(1-\cos(bt))y - hy$ is calibrated using published observations of spraying frequency (15 days), maximum growth rate (25\%), and net decline (0.5\% per day). We derive a closed-form solution via separation of variables and analyze when population density exceeds an odor threshold of $100~\mathrm{g/m^2}$. For initial density $81~\mathrm{g/m^2}$, the model predicts five early exceedance windows that shorten over time, with blooms remaining below threshold after day 72. The work illustrates a systematic approach to building interpretable environmental models from qualitative constraints and published data.
+Lake Chapala, Mexico's largest freshwater lake, faces recurring algal blooms that affect the quality of drinking water for millions of residents. We develop a differential equation model that captures the algae population dynamics, simulating the impact of periodic nutrient input from agricultural pesticide cycles and proportional removal caused by government intervention and natural loss. The model starts from a deliberately simple oscillatory growth term and no death term at all. However, throughout the model development process, we systematically refine the model through five versions to reflect biological feasibility: non-negative population, population-dependent growth, and proportional death. The resulting model: $dy/dt = a(1-\cos(bt))y - hy$ is then calibrated using published observations. Later, we derive a closed-form solution using separation of variables technique and analyze when population density exceeds an odor threshold of $100~\mathrm{g/m^2}$. We find out that for initial density $81~\mathrm{g/m^2}$, the model predicts five early exceedance windows that shorten over time and blooms remain below threshold after day 72. In general, the work presents how differential equations can model population dynamics in an ecosystem taking into account real-world environmental constraints.
 \end{abstract}
 
 \noindent\textbf{Keywords:} algal blooms; Lake Chapala; population dynamics; differential equations; environmental modeling
 
 \section{Introduction}
 
-Lake Chapala in central Mexico is more than just a lake; it supports fishing and farming communities, provides drinking water to millions in Guadalajara, and hosts a diverse fish population and migratory birds. Because it sits inside the larger Lerma River system, Lake Chapala also serves as an environmental indicator – problems in Lake Chapala are indicators of the health of the entire ecosystem. For a long time, the lake has been going through dehydration caused by evaporation, increasing irrigation demands, drainage by the Santiago River, and water being piped to Guadalajara (a major nearby city). As the lake level drops, the water has also become ``cloudy'', which matters because it affects how light and nutrients move through the ecosystem.
+Lake Chapala in central Mexico has gone beyond just being a mere lake – it supports fishing and farming communities, provides drinking water to millions in Guadalajara (a major nearby city), and hosts a diverse fish population and migratory birds. More importantly, Lake Chapala serves as an environmental indicator as it sits inside the larger Lerma River system. Therefore, problems in Lake Chapala are indicators of the health of the entire ecosystem. For a very long time, the lake has been going through dehydration affected mainly by evaporation, increasing irrigation demands, drainage by the Santiago River, and water being piped to Guadalajara. As the lake level drops, the water has also become ``cloudy'', which matters because it affects how light and nutrients move through the lake water ecosystem.
 
-One of the most visible and disruptive symptoms of these changes is recurring algal blooms. Even when blooms are not toxic, they still create real problems. They can be a nuisance for tourists and nearby communities, as reports describe blooms and associated plant growth (like seaweed and hyacinth) that interfere with motorized fishing boats \cite{harwood-algae}. Algal blooms have also been linked to unpleasant taste and odor in drinking water for people in Guadalajara, requiring additional treatment.
+One of the most visible and disruptive symptoms of these changes is recurring algal blooms. Even when blooms are not toxic, they still create real problems. They can be a nuisance for tourists and nearby communities, as blooms and associated plant growth (like seaweed and hyacinth) that interfere with motorized fishing boats, reports describe \cite{harwood-algae}. Algal blooms have also been linked to unpleasant taste and odor in drinking water for people in Guadalajara, requiring additional treatment.
 
 Agricultural chemical residues from runoff, including heavy metals and dissolved solids, can drastically accelerate algae growth. However, algae growth is not controlled by this single cause alone. In addition to these residues, Lake Chapala has high levels of nutrients such as nitrogen and phosphorus and is close to being hyper-eutrophic, meaning nutrient levels are extremely high for the ecosystem. Early studies suggested that nitrogen levels and clay turbidity (how cloudy the water is) were major limiting factors for algae growth. In addition, clay particles from erosion and agricultural runoff increase both nutrients like nitrogen and phosphorus in the water and the water's turbidity, connecting land-use changes around the lake to increased algae growth.
 
@@ -409,16 +411,16 @@ We observe that the exceeding intervals become progressively shorter over time d
 
 \section{Conclusion}
 
-Throughout the paper, we developed a differential equation model to describe algal bloom behavior in Lake Chapala. Starting from a simple oscillatory growth idea, we systematically refined the model to ensure biological feasibility and realistic population behavior. By incorporating periodic growth and proportional death as suggested in the reference paper \cite{harwood-algae}, we structured a general model that reflects both seasonal chemical influx (growth function) and consistent removal effects (death function).
+Throughout the paper, we developed a differential equation model that explains algal bloom pattern in Lake Chapala. The model starts with just a simple oscillatory growth idea and goes through systematic refinement to respect biological feasibility and realistic population behavior. Per the reference paper \cite{harwood-algae}, we built a general model that reflects both seasonal chemical influx (growth function) and consistent removal effects (death function), incorporating periodic growth and proportional death.
 
 Using the observed experimental data, we calibrated the parameters to reflect spraying frequency, maximum rate of change, and subsequent decrease in growth over time. We solved the model and analyzed how the algae population evolves over time. The solution shows oscillatory behavior with decreasing amplitude, meaning the blooms become less severe over time due to the negative net growth rate.
 
 With initial population density of $81~\mathrm{g/m^2}$, the model predicts that the algae population exceeds the odor threshold of $100~\mathrm{g/m^2}$ during five early time intervals. However, these intervals shorten progressively, and the final exceedance occurs around day 72. After this point, the population remains below the threshold.
 
-Overall, this mathematical model serves as a reasonable and simplified representation of Lake Chapala and, more specifically, the algal bloom behavior in this lake. It demonstrates how differential equations can be used to model environmental systems and interpret real-world data.
+Overall, this mathematical model serves as a simplified yet informative representation of algal bloom dynamics in Lake Chapala. It demonstrates how differential equations can be used to model environmental systems and interpret real-world data.
 
 \section*{Acknowledgments}
-This research was conducted under the supervision of Professor Cayce Fylling (Gettysburg College). Environmental observations and scenario data are drawn from Harwood~\cite{harwood-algae}. Code and supplementary materials are available at \url{https://github.com/soikat27/algal-bloom-de-model}.
+This research was conducted under the supervision of Professor Cayce Fylling (Gettysburg College). Environmental observations and scenario data are drawn from Harwood~\cite{harwood-algae}. Figures and supplementary materials are available at \url{https://github.com/soikat27/algal-bloom-de-model}.
 
 \bibliographystyle{plainurl}
 \bibliography{biblio}
