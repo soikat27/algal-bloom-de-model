@@ -42,10 +42,6 @@ algal-bloom-de-model/
 
 Open [`paper/Algal-Blooms-A-DE-Model.pdf`](paper/Algal-Blooms-A-DE-Model.pdf).
 
-## arXiv
-
-TODO: *(Add after submission: `arXiv:XXXX.XXXXX`)*
-
 ## Authors
 
 * **Soikat Saha**
